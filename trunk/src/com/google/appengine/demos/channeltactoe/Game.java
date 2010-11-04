@@ -30,10 +30,10 @@ public class Game {
   private Key key;
   
   @Persistent
-  private User userX;
+  private String userX;
   
   @Persistent
-  private User userY;
+  private String userY;
   
   @Persistent
   private String board;
@@ -41,7 +41,7 @@ public class Game {
   @Persistent
   private Boolean moveX;
   
-  Game(User userX, User userY, String board, boolean moveX) {
+  Game(String userX, String userY, String board, boolean moveX) {
     this.userX = userX;
     this.userY = userY;
     this.board = board;
@@ -52,15 +52,15 @@ public class Game {
     return key;
   }
   
-  public User getUserX() {
+  public String getUserX() {
     return userX;
   }
   
-  public User getUserY() {
+  public String getUserY() {
     return userY;
   }
   
-  public void setUserY(User userY) {
+  public void setUserY(String userY) {
     this.userY = userY;
   }
   
@@ -76,13 +76,17 @@ public class Game {
     return moveX;
   }
   
+  public void setMoveX(boolean moveX) {
+    this.moveX = moveX;
+  }
+  
   public String getMessageString() {
     Map<String, String> state = new HashMap<String, String>();
-    state.put("userX", userX.getUserId());
+    state.put("userX", userX);
     if (userY == null) {
       state.put("userY", "");
     } else {
-      state.put("userY", userY.getUserId());
+      state.put("userY", userY);
     }
     state.put("board", board);
     state.put("moveX", moveX.toString());
@@ -90,14 +94,15 @@ public class Game {
     return message.toString();
   }
   
-  private String getChannelKey(User user) {
-    return user.getUserId() + KeyFactory.keyToString(key);
+  public String getChannelKey(String user) {
+    return user + KeyFactory.keyToString(key);
   }
   
-  private void sendUpdateToUser(User user) {
+  private void sendUpdateToUser(String user) {
     if (user != null) {
       ChannelService channelService = ChannelServiceFactory.getChannelService();
-      channelService.sendMessage(new ChannelMessage(getChannelKey(user), getMessageString()));
+      String channelKey = getChannelKey(user);
+      channelService.sendMessage(new ChannelMessage(channelKey, getMessageString()));
     }
   }
   

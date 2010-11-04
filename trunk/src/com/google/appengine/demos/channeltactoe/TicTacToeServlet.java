@@ -22,13 +22,14 @@ public class TicTacToeServlet extends HttpServlet {
     
     Game game = null;
     String gameKey = req.getParameter("g");
+    String userId = userService.getCurrentUser().getUserId();
     if (gameKey != null) {
       game = pm.getObjectById(Game.class, KeyFactory.stringToKey(gameKey));
       if (game.getUserY() == null) {
-        game.setUserY(userService.getCurrentUser());
+        game.setUserY(userId);
       }
     } else {
-      game = new Game(userService.getCurrentUser(), null, "         ", true);
+      game = new Game(userId, null, "         ", true);
       pm.makePersistent(game);
       gameKey = KeyFactory.keyToString(game.getKey());
     }
@@ -37,10 +38,10 @@ public class TicTacToeServlet extends HttpServlet {
     if (req.getUserPrincipal() != null) {
       FileReader reader = new FileReader("index.html");
       CharBuffer buffer = CharBuffer.allocate(16384);
-      boolean ready = reader.ready();
-      int read = reader.read(buffer);
+      reader.read(buffer);
       String index = new String(buffer.array());
       index = index.replaceAll("\\{\\{ game_key \\}\\}", gameKey);
+      index = index.replaceAll("\\{\\{ me \\}\\}", userId);
       
       resp.setContentType("text/html");
       resp.getWriter().write(index);
