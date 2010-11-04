@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>TicTacToeServlet</servlet-name>
+		<servlet-class>com.google.appengine.demos.channeltactoe.TicTacToeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TicTacToeServlet</servlet-name>
+		<url-pattern>/tic_tac_toe</url-pattern>
+	</servlet-mapping>
+  <servlet>
+    <servlet-name>OpenedServlet</servlet-name>
+    <servlet-class>com.google.appengine.demos.channeltactoe.OpenedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OpenedServlet</servlet-name>
+    <url-pattern>/opened</url-pattern>
+  </servlet-mapping>
+	<servlet>
+		<servlet-name>GetTokenServlet</servlet-name>
+		<servlet-class>com.google.appengine.demos.channeltactoe.GetTokenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetTokenServlet</servlet-name>
+		<url-pattern>/gettoken</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
