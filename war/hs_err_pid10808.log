@@ -1,0 +1,344 @@
+#
+# An unexpected error has been detected by Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x063b4513, pid=10808, tid=3486010224
+#
+# Java VM: Java HotSpot(TM) Server VM (1.6.0_01-b06 mixed mode)
+# Problematic frame:
+# V  [libjvm.so+0x3b4513]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0xcfed9400):  VMThread [id=10820]
+
+siginfo:si_signo=11, si_errno=0, si_code=1, si_addr=0x00000000
+
+Registers:
+EAX=0x00000000, EBX=0xcfed9868, ECX=0x0943ed48, EDX=0xcfed9880
+ESP=0xcfc83f30, EBP=0xcfc83fc8, ESI=0xcfe440f0, EDI=0xcfc83f70
+EIP=0x063b4513, CR2=0x00000000, EFLAGS=0x00010206
+
+Top of Stack: (sp=0xcfc83f30)
+0xcfc83f30:   f773e3c0 00000010 f773e3f0 f773cff4
+0xcfc83f40:   f773e3c0 cfb0ff60 cfc83f68 d0ab7b50
+0xcfc83f50:   d0bf50b8 cfed9400 064224d0 00000000
+0xcfc83f60:   00000010 cfb0ff60 00000011 0000000c
+0xcfc83f70:   09631bb8 0000000f cfed9400 cfed9880
+0xcfc83f80:   cfe44cd8 cfe44ce4 cfe450cc cfc840d0
+0xcfc83f90:   0943ed48 0905d914 cfc83fc8 063b3ce8
+0xcfc83fa0:   cfed9868 cfe440f0 cfe440f8 cfe444e4 
+
+Instructions: (pc=0x063b4513)
+0x063b4503:   83 c4 10 85 c0 74 52 8d b6 00 00 00 00 8b 40 04
+0x063b4513:   8b 08 49 78 31 8b 40 0c 89 85 74 ff ff ff 8b 85 
+
+Stack: [0xcfc04000,0xcfc85000),  sp=0xcfc83f30,  free space=511k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x3b4513]
+V  [libjvm.so+0x3b482a]
+V  [libjvm.so+0x52f947]
+V  [libjvm.so+0x52efcc]
+V  [libjvm.so+0x52f19a]
+V  [libjvm.so+0x52ed7f]
+V  [libjvm.so+0x43ec73]
+C  [libpthread.so.0+0x596e]
+
+VM_Operation (0xcfb0ff00): change breakpoints, mode: safepoint, requested by thread 0xcfef4400
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0xcf9e6800 JavaThread "18584303@qtp-15512561-7" [_thread_blocked, id=11434]
+  0x0945f400 JavaThread "com.google.appengine.repackaged.com.google.common.base.internal.Finalizer" daemon [_thread_blocked, id=10893]
+  0x092dac00 JavaThread "pool-2-thread-2" [_thread_blocked, id=10892]
+  0x092da000 JavaThread "pool-2-thread-1" [_thread_blocked, id=10891]
+  0xcf096800 JavaThread "Timer-1" daemon [_thread_blocked, id=10842]
+  0x092a6800 JavaThread "17726622@qtp-15512561-1 - Acceptor0 SelectChannelConnector@127.0.0.1:8888" [_thread_in_native, id=10841]
+  0xcf9e3800 JavaThread "Timer-0" daemon [_thread_blocked, id=10837]
+  0xcf9de000 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=10835]
+  0xcf9d2000 JavaThread "CompilerThread1" daemon [_thread_blocked, id=10834]
+  0xcf9dec00 JavaThread "CompilerThread0" daemon [_thread_blocked, id=10833]
+  0x0905c400 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=10828]
+  0xcfef6800 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=10827]
+  0xcfef4400 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_blocked, id=10826]
+  0xcfeec000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=10823]
+  0xcfedc800 JavaThread "Finalizer" daemon [_thread_blocked, id=10822]
+  0xcfedc000 JavaThread "Reference Handler" daemon [_thread_blocked, id=10821]
+  0x0904dc00 JavaThread "main" [_thread_blocked, id=10815]
+
+Other Threads:
+=>0xcfed9400 VMThread [id=10820]
+  0xcf9e0800 WatcherThread [id=10836]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x09046518/0x09046540] Threads_lock - owner thread: 0xcfed9400
+
+Heap
+ PSYoungGen      total 21376K, used 7300K [0xf0ac0000, 0xf2530000, 0xf43a0000)
+  eden space 20416K, 31% used [0xf0ac0000,0xf10f2638,0xf1eb0000)
+  from space 960K, 99% used [0xf1fc0000,0xf20aed48,0xf20b0000)
+  to   space 3328K, 0% used [0xf21f0000,0xf21f0000,0xf2530000)
+ PSOldGen        total 9856K, used 6310K [0xd43a0000, 0xd4d40000, 0xf0ac0000)
+  object space 9856K, 64% used [0xd43a0000,0xd49c9a68,0xd4d40000)
+ PSPermGen       total 18176K, used 17222K [0xd03a0000, 0xd1560000, 0xd43a0000)
+  object space 18176K, 94% used [0xd03a0000,0xd14719d0,0xd1560000)
+
+Dynamic libraries:
+06000000-0657e000 r-xp 00000000 fc:00 353502                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/server/libjvm.so
+0657e000-065b5000 rwxp 0057e000 fc:00 353502                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/server/libjvm.so
+065b5000-069d5000 rwxp 00000000 00:00 0 
+08048000-08052000 r-xp 00000000 fc:00 352893                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/bin/java
+08052000-08053000 rwxp 00009000 fc:00 352893                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/bin/java
+09041000-0c44f000 rwxp 00000000 00:00 0                                  [heap]
+ced0d000-ced10000 ---p 00000000 00:00 0 
+ced10000-ced5e000 rwxp 00000000 00:00 0 
+ced5e000-ced61000 ---p 00000000 00:00 0 
+ced61000-cedaf000 rwxp 00000000 00:00 0 
+cedaf000-cedb2000 ---p 00000000 00:00 0 
+cedb2000-cee00000 rwxp 00000000 00:00 0 
+cee00000-cef8d000 rwxp 00000000 00:00 0 
+cef8d000-cf000000 ---p 00000000 00:00 0 
+cf000000-cf0fb000 rwxp 00000000 00:00 0 
+cf0fb000-cf100000 ---p 00000000 00:00 0 
+cf10e000-cf111000 ---p 00000000 00:00 0 
+cf111000-cf15f000 rwxp 00000000 00:00 0 
+cf15f000-cf162000 ---p 00000000 00:00 0 
+cf162000-cf1b0000 rwxp 00000000 00:00 0 
+cf1b0000-cf1b7000 r-xp 00000000 fc:00 353505                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libnio.so
+cf1b7000-cf1b8000 rwxp 00006000 fc:00 353505                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libnio.so
+cf1e6000-cf1e9000 r-xs 0000a000 00:1d 2468922                            /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war/WEB-INF/lib/geronimo-jpa_3.0_spec-1.1.1.jar
+cf1e9000-cf1ef000 r-xs 00043000 00:1d 2468921                            /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war/WEB-INF/lib/datanucleus-appengine-1.0.7.final.jar
+cf1ef000-cf1f5000 r-xs 0002a000 00:1d 2468920                            /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war/WEB-INF/lib/jdo2-api-2.3-eb.jar
+cf1f5000-cf20f000 r-xs 001be000 00:1d 2468919                            /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war/WEB-INF/lib/datanucleus-core-1.1.5.jar
+cf20f000-cf218000 r-xs 00160000 00:1d 2468916                            /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war/WEB-INF/lib/appengine-api-labs-1.3.8.jar
+cf218000-cf265000 r-xs 00acf000 00:1d 2468913                            /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war/WEB-INF/lib/appengine-api-1.0-sdk-1.3.8.jar
+cf265000-cf268000 ---p 00000000 00:00 0 
+cf268000-cf2b6000 rwxp 00000000 00:00 0 
+cf2b6000-cf2b9000 rwxp 00000000 00:00 0 
+cf2b9000-cf307000 rwxp 00000000 00:00 0 
+cf307000-cf30a000 r-xs 000ca000 fc:00 352910                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/ext/localedata.jar
+cf30a000-cf30c000 r-xs 00004000 fc:01 15754060                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/tools/jsp/repackaged-appengine-jakarta-jstl-1.1.2.jar
+cf30c000-cf315000 r-xs 00059000 fc:01 15754061                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/tools/jsp/repackaged-appengine-jakarta-standard-1.1.2.jar
+cf315000-cf362000 r-xs 00acf000 fc:01 15754045                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/impl/appengine-api.jar
+cf362000-cf3ac000 r-xs 00950000 fc:01 15754046                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/impl/appengine-local-runtime.jar
+cf3ac000-cf3af000 rwxp 00000000 00:00 0 
+cf3af000-cf3fd000 rwxp 00000000 00:00 0 
+cf3fd000-cf401000 r-xp 00000000 fc:00 442552                             /lib32/libnss_dns-2.11.1.so
+cf401000-cf402000 r-xp 00004000 fc:00 442552                             /lib32/libnss_dns-2.11.1.so
+cf402000-cf403000 rwxp 00005000 fc:00 442552                             /lib32/libnss_dns-2.11.1.so
+cf407000-cf410000 r-xs 00160000 fc:01 15754043                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/impl/appengine-api-labs.jar
+cf410000-cf41f000 r-xs 00251000 fc:01 15754044                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/impl/appengine-api-stubs.jar
+cf41f000-cf500000 rwxp 00000000 00:00 0 
+cf500000-cf5ff000 rwxp 00000000 00:00 0 
+cf5ff000-cf600000 ---p 00000000 00:00 0 
+cf602000-cf605000 ---p 00000000 00:00 0 
+cf605000-cf653000 rwxp 00000000 00:00 0 
+cf653000-cf654000 ---p 00000000 00:00 0 
+cf654000-cf6d4000 rwxp 00000000 00:00 0 
+cf6d4000-cf6d7000 ---p 00000000 00:00 0 
+cf6d7000-cf725000 rwxp 00000000 00:00 0 
+cf725000-cf728000 ---p 00000000 00:00 0 
+cf728000-cf7a6000 rwxp 00000000 00:00 0 
+cf7a6000-cf7a9000 ---p 00000000 00:00 0 
+cf7a9000-cf827000 rwxp 00000000 00:00 0 
+cf827000-cf829000 r-xs 00046000 fc:01 15754041                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/agent/appengine-agentimpl.jar
+cf829000-cf82b000 r-xs 00007000 fc:01 15754040                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/agent/appengine-agent.jar
+cf82b000-cf87a000 r-xs 0081f000 fc:01 15747339                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/appengine-tools-api.jar
+cf87a000-cf87d000 r-xs 0000a000 fc:01 15754076                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/user/orm/geronimo-jpa_3.0_spec-1.1.1.jar
+cf87d000-cf883000 r-xs 00043000 fc:01 15754073                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/user/orm/datanucleus-appengine-1.0.7.final.jar
+cf883000-cf889000 r-xs 0002a000 fc:01 15754078                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/user/orm/jdo2-api-2.3-eb.jar
+cf889000-cf8a3000 r-xs 001be000 fc:01 15754074                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/user/orm/datanucleus-core-1.1.5.jar
+cf8a3000-cf8a4000 r-xs 00003000 fc:01 15754077                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/user/orm/geronimo-jta_1.1_spec-1.1.1.jar
+cf8a4000-cf8a8000 r-xs 00022000 fc:01 15754075                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/user/orm/datanucleus-jpa-1.1.5.jar
+cf8a8000-cf8b1000 r-xs 00160000 fc:01 15754070                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/user/appengine-api-labs-1.3.8.jar
+cf8b1000-cf8b2000 r-xs 00003000 fc:01 15754071                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/user/appengine-jsr107cache-1.3.8.jar
+cf8b2000-cf8b3000 r-xs 00001000 fc:01 15754072                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/user/jsr107cache-1.1.jar
+cf8b3000-cf900000 r-xs 00acf000 fc:01 15754069                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/user/appengine-api-1.0-sdk-1.3.8.jar
+cf900000-cf9ff000 rwxp 00000000 00:00 0 
+cf9ff000-cfa00000 ---p 00000000 00:00 0 
+cfa00000-cfa01000 r-xs 00003000 00:1d 2468918                            /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war/WEB-INF/lib/geronimo-jta_1.1_spec-1.1.1.jar
+cfa01000-cfa05000 r-xs 00022000 00:1d 2468917                            /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war/WEB-INF/lib/datanucleus-jpa-1.1.5.jar
+cfa05000-cfa07000 r-xs 00012000 fc:01 15754042                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/impl/agent/appengine-agentruntime.jar
+cfa07000-cfa0a000 r-xs 00013000 fc:00 352900                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/jce.jar
+cfa0a000-cfa1a000 r-xp 00000000 fc:00 442408                             /lib32/libresolv-2.11.1.so
+cfa1a000-cfa1b000 r-xp 00010000 fc:00 442408                             /lib32/libresolv-2.11.1.so
+cfa1b000-cfa1c000 rwxp 00011000 fc:00 442408                             /lib32/libresolv-2.11.1.so
+cfa1c000-cfa1e000 rwxp 00000000 00:00 0 
+cfa1e000-cfa21000 ---p 00000000 00:00 0 
+cfa21000-cfa6f000 rwxp 00000000 00:00 0 
+cfa6f000-cfa72000 ---p 00000000 00:00 0 
+cfa72000-cfac0000 rwxp 00000000 00:00 0 
+cfac0000-cfac3000 ---p 00000000 00:00 0 
+cfac3000-cfb11000 rwxp 00000000 00:00 0 
+cfb11000-cfb14000 ---p 00000000 00:00 0 
+cfb14000-cfb62000 rwxp 00000000 00:00 0 
+cfb62000-cfb65000 ---p 00000000 00:00 0 
+cfb65000-cfbb3000 rwxp 00000000 00:00 0 
+cfbb3000-cfbb6000 ---p 00000000 00:00 0 
+cfbb6000-cfc04000 rwxp 00000000 00:00 0 
+cfc04000-cfc05000 ---p 00000000 00:00 0 
+cfc05000-cfc85000 rwxp 00000000 00:00 0 
+cfc85000-cfe00000 r-xs 02c71000 fc:00 352907                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/rt.jar
+cfe00000-cff00000 rwxp 00000000 00:00 0 
+cff00000-cff07000 r-xs 00106000 fc:00 353563                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/resources.jar
+cff07000-cff0a000 r-xs 00027000 fc:00 352913                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/ext/sunjce_provider.jar
+cff0a000-cff1d000 r-xp 00000000 fc:00 353504                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libnet.so
+cff1d000-cff1e000 rwxp 00013000 fc:00 353504                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libnet.so
+cff1e000-cff24000 r-xs 00091000 fc:00 352916                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/jsse.jar
+cff24000-cff27000 r-xs 0000f000 fc:01 15754050                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/shared/geronimo-servlet_2.5_spec-1.2.jar
+cff27000-cff29000 r-xs 00010000 fc:01 15754049                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/shared/geronimo-jsp_2.1_spec-1.0.1.jar
+cff29000-cff2c000 r-xs 0004a000 fc:01 15754047                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/shared/appengine-local-runtime-shared.jar
+cff2c000-cff2e000 r-xs 00007000 fc:01 15754048                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/shared/geronimo-el_1.0_spec-1.0.1.jar
+cff2e000-cff31000 r-xs 00018000 fc:01 15754057                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/shared/jsp/repackaged-appengine-jasper-runtime-5.0.28.jar
+cff31000-cff33000 r-xs 0000e000 fc:01 15754055                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/shared/jsp/repackaged-appengine-commons-logging-1.1.1.jar
+cff33000-cff47000 r-xs 0012e000 fc:01 15754052                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/shared/jsp/repackaged-appengine-ant-1.7.1.jar
+cff47000-cff77000 rwxp 00000000 00:00 0 
+cff77000-cff78000 ---p 00000000 00:00 0 
+cff78000-cfff8000 rwxp 00000000 00:00 0 
+cfff8000-cfff9000 ---p 00000000 00:00 0 
+cfff9000-d0079000 rwxp 00000000 00:00 0 
+d0079000-d007a000 ---p 00000000 00:00 0 
+d007a000-d00fa000 rwxp 00000000 00:00 0 
+d00fa000-d00fb000 ---p 00000000 00:00 0 
+d00fb000-d0184000 rwxp 00000000 00:00 0 
+d0184000-d019b000 rwxp 00000000 00:00 0 
+d019b000-d01a0000 rwxp 00000000 00:00 0 
+d01a0000-d027f000 rwxp 00000000 00:00 0 
+d027f000-d0288000 rwxp 00000000 00:00 0 
+d0288000-d029f000 rwxp 00000000 00:00 0 
+d029f000-d02a4000 rwxp 00000000 00:00 0 
+d02a4000-d0382000 rwxp 00000000 00:00 0 
+d0382000-d0390000 rwxp 00000000 00:00 0 
+d0390000-d039f000 rwxp 00000000 00:00 0 
+d039f000-d1560000 rwxp 00000000 00:00 0 
+d1560000-d43a0000 rwxp 00000000 00:00 0 
+d43a0000-d4d40000 rwxp 00000000 00:00 0 
+d4d40000-f0ac0000 rwxp 00000000 00:00 0 
+f0ac0000-f2530000 rwxp 00000000 00:00 0 
+f2530000-f43a0000 rwxp 00000000 00:00 0 
+f43a1000-f43a6000 r-xs 00053000 fc:01 15754056                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/shared/jsp/repackaged-appengine-jasper-compiler-5.0.28.jar
+f43a6000-f43a8000 r-xs 00002000 fc:01 15754053                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/shared/jsp/repackaged-appengine-ant-launcher-1.7.1.jar
+f43a8000-f43b1000 rwxp 00000000 00:00 0 
+f43b1000-f4468000 rwxp 00000000 00:00 0 
+f4468000-f46a8000 rwxp 00000000 00:00 0 
+f46a8000-f7468000 rwxp 00000000 00:00 0 
+f7468000-f7477000 r-xp 00000000 fc:00 353509                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libzip.so
+f7477000-f7479000 rwxp 0000e000 fc:00 353509                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libzip.so
+f7479000-f749c000 r-xp 00000000 fc:00 353514                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libjava.so
+f749c000-f749e000 rwxp 00023000 fc:00 353514                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libjava.so
+f749e000-f74a1000 r-xp 00000000 fc:00 1935963                            /usr/lib32/libnss_cache.so.2.0
+f74a1000-f74a2000 r-xp 00002000 fc:00 1935963                            /usr/lib32/libnss_cache.so.2.0
+f74a2000-f74a3000 rwxp 00003000 fc:00 1935963                            /usr/lib32/libnss_cache.so.2.0
+f74a3000-f74ad000 r-xp 00000000 fc:00 442556                             /lib32/libnss_files-2.11.1.so
+f74ad000-f74ae000 r-xp 00009000 fc:00 442556                             /lib32/libnss_files-2.11.1.so
+f74ae000-f74af000 rwxp 0000a000 fc:00 442556                             /lib32/libnss_files-2.11.1.so
+f74af000-f74b8000 r-xp 00000000 fc:00 353544                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libinstrument.so
+f74b8000-f74b9000 rwxp 00008000 fc:00 353544                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libinstrument.so
+f74b9000-f74f8000 r-xp 00000000 fc:00 2080812                            /usr/lib/locale/en_US.utf8/LC_CTYPE
+f74f8000-f7531000 r-xp 00000000 fc:00 353540                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libjdwp.so
+f7531000-f7532000 rwxp 00039000 fc:00 353540                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libjdwp.so
+f7532000-f7545000 r-xp 00000000 fc:00 442383                             /lib32/libnsl-2.11.1.so
+f7545000-f7546000 r-xp 00012000 fc:00 442383                             /lib32/libnsl-2.11.1.so
+f7546000-f7547000 rwxp 00013000 fc:00 442383                             /lib32/libnsl-2.11.1.so
+f7547000-f7549000 rwxp 00000000 00:00 0 
+f7549000-f754a000 r-xs 00003000 00:1d 2468915                            /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war/WEB-INF/lib/appengine-jsr107cache-1.3.8.jar
+f754a000-f754d000 r-xs 00019000 fc:01 15754054                           /usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/shared/jsp/repackaged-appengine-commons-el-1.0.jar
+f754d000-f7550000 r-xp 00000000 fc:00 353516                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libdt_socket.so
+f7550000-f7551000 rwxp 00003000 fc:00 353516                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libdt_socket.so
+f7551000-f755c000 r-xp 00000000 fc:00 353555                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libverify.so
+f755c000-f755d000 rwxp 0000b000 fc:00 353555                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libverify.so
+f755d000-f7565000 rwxs 00000000 fc:00 2025882                            /tmp/hsperfdata_moishel/10808
+f7565000-f756c000 r-xp 00000000 fc:00 442406                             /lib32/librt-2.11.1.so
+f756c000-f756d000 r-xp 00006000 fc:00 442406                             /lib32/librt-2.11.1.so
+f756d000-f756e000 rwxp 00007000 fc:00 442406                             /lib32/librt-2.11.1.so
+f756e000-f7571000 ---p 00000000 00:00 0 
+f7571000-f75bf000 rwxp 00000000 00:00 0 
+f75bf000-f75e3000 r-xp 00000000 fc:00 442376                             /lib32/libm-2.11.1.so
+f75e3000-f75e4000 r-xp 00023000 fc:00 442376                             /lib32/libm-2.11.1.so
+f75e4000-f75e5000 rwxp 00024000 fc:00 442376                             /lib32/libm-2.11.1.so
+f75e5000-f75e7000 rwxp 00000000 00:00 0 
+f75e7000-f773a000 r-xp 00000000 fc:00 442553                             /lib32/libc-2.11.1.so
+f773a000-f773b000 ---p 00153000 fc:00 442553                             /lib32/libc-2.11.1.so
+f773b000-f773d000 r-xp 00153000 fc:00 442553                             /lib32/libc-2.11.1.so
+f773d000-f773e000 rwxp 00155000 fc:00 442553                             /lib32/libc-2.11.1.so
+f773e000-f7741000 rwxp 00000000 00:00 0 
+f7741000-f7743000 r-xp 00000000 fc:00 442557                             /lib32/libdl-2.11.1.so
+f7743000-f7744000 r-xp 00001000 fc:00 442557                             /lib32/libdl-2.11.1.so
+f7744000-f7745000 rwxp 00002000 fc:00 442557                             /lib32/libdl-2.11.1.so
+f7745000-f774c000 r-xp 00000000 fc:00 353543                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/jli/libjli.so
+f774c000-f774e000 rwxp 00006000 fc:00 353543                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/jli/libjli.so
+f774e000-f7763000 r-xp 00000000 fc:00 442551                             /lib32/libpthread-2.11.1.so
+f7763000-f7764000 r-xp 00014000 fc:00 442551                             /lib32/libpthread-2.11.1.so
+f7764000-f7765000 rwxp 00015000 fc:00 442551                             /lib32/libpthread-2.11.1.so
+f7765000-f7768000 rwxp 00000000 00:00 0 
+f7768000-f7769000 r-xs 00001000 00:1d 2468914                            /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war/WEB-INF/lib/jsr107cache-1.1.jar
+f7769000-f776a000 r-xp 00000000 fc:00 2080814                            /usr/lib/locale/en_US.utf8/LC_MESSAGES/SYS_LC_MESSAGES
+f776a000-f776b000 r-xp 00000000 fc:00 2080821                            /usr/lib/locale/en_US.utf8/LC_PAPER
+f776b000-f776c000 r-xp 00000000 fc:00 2080823                            /usr/lib/locale/en_US.utf8/LC_NAME
+f776c000-f776d000 r-xp 00000000 fc:00 2080822                            /usr/lib/locale/en_US.utf8/LC_ADDRESS
+f776d000-f776e000 r-xp 00000000 fc:00 2080820                            /usr/lib/locale/en_US.utf8/LC_TELEPHONE
+f776e000-f776f000 r-xp 00000000 fc:00 2080818                            /usr/lib/locale/en_US.utf8/LC_MEASUREMENT
+f776f000-f7776000 r-xs 00000000 fc:00 1935837                            /usr/lib32/gconv/gconv-modules.cache
+f7776000-f7777000 r-xp 00000000 fc:00 2080824                            /usr/lib/locale/en_US.utf8/LC_IDENTIFICATION
+f7777000-f777a000 r-xp 00000000 fc:00 353518                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libnpt.so
+f777a000-f777b000 rwxp 00002000 fc:00 353518                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/libnpt.so
+f777b000-f7781000 r-xp 00000000 fc:00 353507                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/native_threads/libhpi.so
+f7781000-f7782000 rwxp 00006000 fc:00 353507                             /usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/native_threads/libhpi.so
+f7782000-f7783000 rwxp 00000000 00:00 0 
+f7783000-f7784000 ---p 00000000 00:00 0 
+f7784000-f7786000 rwxp 00000000 00:00 0 
+f7786000-f7787000 r-xp 00000000 00:00 0                                  [vdso]
+f7787000-f77a3000 r-xp 00000000 fc:00 442385                             /lib32/ld-2.11.1.so
+f77a3000-f77a4000 r-xp 0001b000 fc:00 442385                             /lib32/ld-2.11.1.so
+f77a4000-f77a5000 rwxp 0001c000 fc:00 442385                             /lib32/ld-2.11.1.so
+ffb03000-ffb19000 rwxp 00000000 00:00 0                                  [stack]
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:45544 -Xmx512m -javaagent:/usr/local/google/users/moishel/eclipse35/stable/plugins/com.google.appengine.eclipse.sdkbundle.1.3.8_1.3.8.v201010161055/appengine-java-sdk-1.3.8/lib/agent/appengine-agent.jar -Dfile.encoding=UTF-8
+java_command: com.google.appengine.tools.development.DevAppServerMain --port=8888 /home/moishel/src/java-channel-tac-toe/java-channel-tac-toe/war
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/buildtools/java/jdk-32/bin:/usr/local/symlinks:/usr/local/scripts:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+USERNAME=moishel
+LD_LIBRARY_PATH=/usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386/server:/usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/lib/i386:/usr/local/buildtools/java/jdk1.6.0_01_gg1/jre/../lib/i386:/usr/local/buildtools/java/jdk6-google-v3/jre/lib/i386/client:/usr/local/buildtools/java/jdk6-google-v3/jre/lib/i386:/usr/lib/xulrunner-addons:/usr/lib/xulrunner-addons:/usr/lib/xulrunner-addons
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x51d3a0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x51d3a0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x43d430], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x43d430], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x43d430], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x43f440], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x43ee60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x43ee60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x43ee60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x43ee60], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR2: [libjvm.so+0x43f440], sa_mask[0]=0x00000004, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:squeeze/sid
+
+uname:Linux 2.6.32-gg252-generic #gg252-Ubuntu SMP Mon Sep 13 22:09:00 UTC 2010 x86_64
+libc:glibc 2.11.1 NPTL 2.11.1 
+rlimit: STACK 8192k, CORE 0k, NPROC infinity, NOFILE 32768, AS infinity
+load average:0.36 0.31 0.27
+
+CPU:total 4 family 6, cmov, cx8, fxsr, mmx, sse, sse2
+
+Memory: 4k page, physical 8194292k(241036k free), swap 24002552k(23773048k free)
+
+vm_info: Java HotSpot(TM) Server VM (1.6.0_01-b06) for linux-x86, built on Mar 14 2007 00:47:53 by "java_re" with gcc 3.2.1-7a (J2SE release)
+
