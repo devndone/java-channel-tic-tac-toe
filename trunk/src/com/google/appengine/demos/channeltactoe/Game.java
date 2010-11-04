@@ -2,7 +2,11 @@
 
 package com.google.appengine.demos.channeltactoe;
 
+import com.google.appengine.api.channel.ChannelMessage;
+import com.google.appengine.api.channel.ChannelService;
+import com.google.appengine.api.channel.ChannelServiceFactory;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.repackaged.org.json.JSONObject;
 
@@ -56,8 +60,16 @@ public class Game {
     return userY;
   }
   
+  public void setUserY(User userY) {
+    this.userY = userY;
+  }
+  
   public String getBoard() {
     return board;
+  }
+  
+  public void setBoard(String board) {
+    this.board = board;
   }
   
   public boolean getMoveX() {
@@ -76,5 +88,21 @@ public class Game {
     state.put("moveX", moveX.toString());
     JSONObject message = new JSONObject(state);
     return message.toString();
+  }
+  
+  private String getChannelKey(User user) {
+    return user.getUserId() + KeyFactory.keyToString(key);
+  }
+  
+  private void sendUpdateToUser(User user) {
+    if (user != null) {
+      ChannelService channelService = ChannelServiceFactory.getChannelService();
+      channelService.sendMessage(new ChannelMessage(getChannelKey(user), getMessageString()));
+    }
+  }
+  
+  public void sendUpdateToClients() {
+    sendUpdateToUser(userX);
+    sendUpdateToUser(userY);
   }
 }

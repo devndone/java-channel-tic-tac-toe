@@ -21,14 +21,18 @@ public class TicTacToeServlet extends HttpServlet {
     PersistenceManager pm = PMF.get().getPersistenceManager();
     
     Game game = null;
-    String gameKey = req.getParameter("g"); 
+    String gameKey = req.getParameter("g");
     if (gameKey != null) {
       game = pm.getObjectById(Game.class, KeyFactory.stringToKey(gameKey));
+      if (game.getUserY() == null) {
+        game.setUserY(userService.getCurrentUser());
+      }
     } else {
-      game = new Game(userService.getCurrentUser(), null, "", true);
+      game = new Game(userService.getCurrentUser(), null, "         ", true);
       pm.makePersistent(game);
       gameKey = KeyFactory.keyToString(game.getKey());
     }
+    pm.close();
     
     if (req.getUserPrincipal() != null) {
       FileReader reader = new FileReader("index.html");
