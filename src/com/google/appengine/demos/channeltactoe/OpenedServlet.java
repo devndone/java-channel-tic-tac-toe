@@ -28,9 +28,7 @@ public class OpenedServlet extends HttpServlet {
     PersistenceManager pm = PMF.get().getPersistenceManager();
     Game game = pm.getObjectById(Game.class, KeyFactory.stringToKey(gameId));
     if (gameId != null && req.getUserPrincipal() != null) {
-      String channelKey = userService.getCurrentUser().getUserId() + gameId;
-      ChannelService channelService = ChannelServiceFactory.getChannelService();
-      channelService.sendMessage(new ChannelMessage(channelKey, game.getMessageString()));
+      game.sendUpdateToClients();
       resp.setContentType("text/plain");
       resp.getWriter().println("ok");
     } else {
