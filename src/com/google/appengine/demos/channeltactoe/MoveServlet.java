@@ -21,24 +21,9 @@ public class MoveServlet extends HttpServlet {
     Game game = pm.getObjectById(Game.class, KeyFactory.stringToKey(gameId));
     
     String currentUserId = userService.getCurrentUser().getUserId();
-    String currentMovePlayer;
-    char value;
-    if (game.getMoveX()) {
-        value = 'X';
-        currentMovePlayer = game.getUserX();
-    } else {
-      value = 'Y';
-      currentMovePlayer = game.getUserY();
+    if (!game.makeMove(piece, currentUserId)) {
+      resp.setStatus(401);
     }
-    if (currentUserId.equals(currentMovePlayer)) {
-      char[] boardBytes = game.getBoard().toCharArray();
-      boardBytes[piece] = value;
-      game.setBoard(new String(boardBytes));
-      game.setMoveX(!game.getMoveX());
-      pm.close();
-      game.sendUpdateToClients();
-      return;
-    }
-    resp.setStatus(401);
+    pm.close();
   }
 }
