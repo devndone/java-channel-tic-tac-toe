@@ -24,7 +24,7 @@
         }
         
         table {
-          cellpadding: none;
+          border-collapse: collapse;
         }
         
         td {
@@ -234,19 +234,19 @@
       <div id='you-lost'>
         You lost this game.
       </div>
-      <div id='this-game' float='top'>
-        Quick link to this game: <span id='this-game-link'><a href='{{ game_link }}'>{{ game_link }}</a></span>
-      </div>
       <div id='board'>
         <div class='t l cell'><table><tr><td id='0'></td></tr></td></table></div>
-        <div class='t c cell' id='1'></div>
-        <div class='t r cell' id='2'></div>
-        <div class='m l cell' id='3'></div>
-        <div class='m c cell' id='4'></div>
-        <div class='m r cell' id='5'></div>
-        <div class='b l cell' id='6'></div>
-        <div class='b c cell' id='7'></div>
-        <div class='b r cell' id='8'></div>
+        <div class='t c cell'><table><tr><td id='1'></td></tr></td></table></div>
+        <div class='t r cell'><table><tr><td id='2'></td></tr></td></table></div>
+        <div class='m l cell'><table><tr><td id='3'></td></tr></td></table></div>
+        <div class='m c cell'><table><tr><td id='4'></td></tr></td></table></div>
+        <div class='m r cell'><table><tr><td id='5'></td></tr></td></table></div>
+        <div class='b l cell'><table><tr><td id='6'></td></tr></td></table></div>
+        <div class='b c cell'><table><tr><td id='7'></td></tr></td></table></div>
+        <div class='b r cell'><table><tr><td id='8'></td></tr></td></table></div>
+      </div>
+      <div id='this-game' float='top'>
+        Quick link to this game: <span id='this-game-link'><a href='{{ game_link }}'>{{ game_link }}</a></span>
       </div>
     </div>
   </body>
