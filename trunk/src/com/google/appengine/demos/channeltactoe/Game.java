@@ -121,7 +121,7 @@ public class Game {
     state.put("board", board);
     state.put("moveX", moveX.toString());
     state.put("winner", winner);
-    if (winner != "") {
+    if (winner != null && winner != "") {
       state.put("winningBoard", winningBoard);
     }
     JSONObject message = new JSONObject(state);

@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class OpenedServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    String gameId = req.getParameter("g"); 
+    String gameId = req.getParameter("gamekey"); 
     PersistenceManager pm = PMF.get().getPersistenceManager();
     Game game = pm.getObjectById(Game.class, KeyFactory.stringToKey(gameId));
     if (gameId != null && req.getUserPrincipal() != null) {
