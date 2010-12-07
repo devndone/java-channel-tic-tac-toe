@@ -23,13 +23,13 @@ public class GetTokenServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     UserService userService = UserServiceFactory.getUserService();
-    String gameId = req.getParameter("g"); 
+    String gameId = req.getParameter("gamekey"); 
     PersistenceManager pm = PMF.get().getPersistenceManager();
     Game game = pm.getObjectById(Game.class, KeyFactory.stringToKey(gameId));
     
     String currentUserId = userService.getCurrentUser().getUserId();
     if (currentUserId.equals(game.getUserX()) ||
-        currentUserId.equals(game.getUserY())) {
+        currentUserId.equals(game.getUserO())) {
       String channelKey = game.getChannelKey(currentUserId);
       ChannelService channelService = ChannelServiceFactory.getChannelService();
       resp.setContentType("text/plain");

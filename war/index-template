@@ -7,26 +7,26 @@
         }
 
         #board {
-          width:152px; 
+          width:152px;
           height: 152px;
           margin: 20px auto;
         }
-        
+
         #display-area {
           text-align: center;
         }
-        
+
         #this-game {
           font-size: 9pt;
         }
-        
+
         #winner {
         }
-        
+
         table {
           border-collapse: collapse;
         }
-        
+
         td {
           width: 50px;
           height: 50px;
@@ -37,7 +37,7 @@
           margin:0px;
           padding: 0px;
         }
-        
+
         div.cell {
           float: left;
           width: 50px;
@@ -46,30 +46,30 @@
           margin: 0px;
           padding: 0px;
         }
-        
+
         div.mark {
           position: absolute;
-          top: 15px;          
+          top: 15px;
         }
-        
+
         div.l {
           border-right: 1pt solid black;
         }
-        
+
         div.c {
         }
-        
+
         div.r {
           border-left: 1pt solid black;
         }
-        
+
         div.t {
           border-bottom: 1pt solid black;
         }
-        
+
         div.m {
         }
-        
+
         div.b {
           border-top: 1pt solid black;
         }
@@ -98,7 +98,7 @@
             }
           }
         }
-        
+
         var display = {
           'other-player': 'none',
           'your-move': 'none',
@@ -107,7 +107,7 @@
           'you-lost': 'none',
           'board': 'block',
           'this-game': 'block',
-        }; 
+        };
 
         if (!state.userO || state.userO == '') {
           display['other-player'] = 'block';
@@ -122,14 +122,14 @@
         } else {
           display['their-move'] = 'block';
         }
-        
+
         for (var label in display) {
           document.getElementById(label).style.display = display[label];
         }
       };
-      
+
       isMyMove = function() {
-        return (state.winner == "") && 
+        return (state.winner == "") &&
             (state.moveX == (state.userX == state.me));
       }
 
@@ -138,7 +138,7 @@
       }
 
       sendMessage = function(path, opt_param) {
-        path += '?g=' + state.game_key;
+        path += '?gamekey=' + state.game_key;
         if (opt_param) {
           path += '&' + opt_param;
         }
@@ -171,11 +171,11 @@
           document.getElementById(i).style['background'] = color;
         }
       }
-      
+
       onOpened = function() {
         sendMessage('/opened');
       };
-      
+
       onMessage = function(m) {
         newState = JSON.parse(m.data);
         state.board = newState.board || state.board;
@@ -186,7 +186,7 @@
         state.winningBoard = newState.winningBoard || "";
         updateGame();
       }
-      
+
       openChannel = function() {
         var token = '{{ token }}';
         var channel = new goog.appengine.Channel(token);
@@ -200,7 +200,7 @@
         socket.onopen = onOpened;
         socket.onmessage = onMessage;
       }
-      
+
       initialize = function() {
         openChannel();
         var i;
@@ -210,7 +210,7 @@
           square.onclick = new Function('moveInSquare(' + i + ')');
         }
         onMessage({data: '{{ initial_message }}'});
-      }      
+      }
 
       setTimeout(initialize, 100);
 
